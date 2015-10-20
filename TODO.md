@@ -1,0 +1,16 @@
+### Processing SoundFile interface:
+- [x] play
+- [x] loop
+- [x] stop
+- [ ] cue
+- [ ] jump
+- [ ] ate
+- [ ] amp
+- [ ] add
+- [ ] pan
+- [ ] set
+- [ ] duration
+- [ ] sampleRate
+- [ ] frames
+- [ ] channels
+- [ ] path
