@@ -1,7 +1,7 @@
-package processing.sound.android;
+package cassette.audiofiles;
 
-import processing.sound.android.SoundBase;
-import processing.sound.android.MediaPlayerHandlerCallback;
+import cassette.audiofiles.SoundBase;
+import cassette.audiofiles.MediaPlayerHandlerCallback;
 
 import java.io.IOException;
 

@@ -1,6 +1,6 @@
 //Sound file from: http://soundbible.com/2083-Crickets-Chirping-At-Night.html
 
-import processing.sound.android.*;
+import cassette.audiofiles.SoundFile;
 
 SoundFile music;
 
