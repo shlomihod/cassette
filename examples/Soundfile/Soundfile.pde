@@ -10,7 +10,6 @@ void setup() {
   
     music = new SoundFile(this, "Crickets.mp3");
     music.loop();
-    music.play();
 }
 
 void draw() {
