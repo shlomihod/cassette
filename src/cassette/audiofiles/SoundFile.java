@@ -20,9 +20,26 @@ public class SoundFile extends SoundBase implements MediaPlayerHandlerCallback {
     
     private MediaPlayerHandler handler;
     private MediaPlayer player;
+
         
     public SoundFile(PApplet parent, String fileName) {
+        this(parent);
+
+        loadFile(fileName);
+    }
+
+    public SoundFile(PApplet parent) {
         super(parent);
+
+        HandlerThread backgroundThread = new HandlerThread("MediaPlayer");
+        backgroundThread.start();
+
+        handler = new MediaPlayerHandler(backgroundThread.getLooper());
+        handler.setCallback(this);
+
+    }
+    
+    public void loadFile(String fileName) {
         AssetFileDescriptor afd = null;
         try {
             afd = activity.getAssets().openFd(fileName);
@@ -32,13 +49,9 @@ public class SoundFile extends SoundBase implements MediaPlayerHandlerCallback {
             e.printStackTrace();
         }
 
-        HandlerThread backgroundThread = new HandlerThread("MediaPlayer");
-        backgroundThread.start();
-        handler = new MediaPlayerHandler(backgroundThread.getLooper());
-        handler.setCallback(this);
-        handler.sendMessage(handler.obtainMessage(MediaPlayerHandler.MSG_INIT_PLAYER, afd));
+        handler.sendMessage(handler.obtainMessage(MediaPlayerHandler.MSG_INIT_PLAYER, afd));        
     }
-    
+
     public void play() {
         handler.sendMessage(handler.obtainMessage(MediaPlayerHandler.MSG_START_PLAYER));
     }
