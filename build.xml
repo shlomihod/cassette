@@ -58,11 +58,10 @@
     <copy file="library.properties" tofile="dist/tmp/cassette/library.properties" />
     
     <!-- create the java reference of the library -->
-    <!--
-    <mkdir dir="dist/tmp/casette/reference" />
+    <mkdir dir="reference" />
 	<javadoc bottom="Cassette"
 			classpath="/Applications/Processing.app/Contents/Java/core/library;bin" 
-			destdir="dist/tmp/cassette/reference"
+			destdir="reference"
 			verbose="false" 
 			stylesheetfile="resources/stylesheet.css" 
 			doctitle="Javadocs: Cassette"
@@ -70,12 +69,16 @@
 			windowtitle="Javadocs: Cassette">
  		<link href="http://java.sun.com/javase/6/docs/api/" />
 		<link href="https://github.com/shlomihod/cassette" />
-		<taglet name="ExampleTaglet" path="resources/code" />
- 		<fileset dir="dist/tmp/Cassette/src" defaultexcludes="yes"> 
+		<taglet name="ExampleTaglet" path="examples" />
+ 		<fileset dir="src" defaultexcludes="yes"> 
 			<include name="**/*"/>
 		</fileset>
-	</javadoc>    -->
-        
+	</javadoc>
+
+    <copy todir="dist/tmp/cassette/reference">
+      <fileset dir="reference" />
+  </copy> 
+
     <!-- create zip package -->
     <delete file="dist/cassette.zip"/>
 	<zip destfile="dist/cassette.zip"
